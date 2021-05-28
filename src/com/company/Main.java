@@ -6,7 +6,8 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-	int [] p1 = randFirst();
+	    Random r = new Random();
+	    int [] p1 = randFirst();
     }
 	
 	public static int[] randFirst(){
