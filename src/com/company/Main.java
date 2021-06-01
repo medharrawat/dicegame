@@ -46,3 +46,14 @@ public class Main {
 		}
 	}
 }
+
+//This is for the class in which you're setting up the Jpanel
+rollButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                pDice.setText("Your dice are: " + Arrays.toString(player)); //if there is a text box named pDice for player dice and a button labeled "Roll"
+                cDice.setText("The computer's dice are: " + Arrays.toString(comp)); // if there is a text box named cDice for computer dice
+            }
+        });
