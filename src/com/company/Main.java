@@ -6,46 +6,60 @@ import java.util.Arrays;
 public class Main {
 
 	public static void main(String[] args) {
-		int [] player = roll();
-		int [] comp = roll();
-		int playerTotal = total(player);
-		int compTotal = total(comp);
+		int diceNum = findNum();
+		int [] player = roll(diceNum);
+		int [] comp = roll(diceNum);
+		int playerTotal = total(player, diceNum);
+		int compTotal = total(comp, diceNum);
 		String winner = compare (playerTotal, compTotal);
-		//System.out.println(Arrays.toString(player));
-		//System.out.println(Arrays.toString(comp));
+		//System.out.println("Player's dice: " + Arrays.toString(player));
+		//System.out.println("Computer's dice: " + Arrays.toString(comp));
 		//System.out.println("Player's total: " + playerTotal);
-        	//System.out.println("Computer's total: " + compTotal);
-        	//System.out.println(winner + " wins!");
-	}
-	
-	public static int [] roll(){
+		//System.out.println("Computer's total: " + compTotal);
+		//System.out.println(winner + " wins! Good game");
+		}
+
+	    public static int findNum(){
+		Scanner sc = new Scanner(System.in);
+		boolean b = false;
+		int numDice = 0;
+		System.out.print("How many dice would you like to use? ");
+		numDice = sc.nextInt();
+		while (numDice <= 0){
+		    System.out.print("Please enter an integer greater than 0: ");
+		    numDice = sc.nextInt();
+		}
+		return numDice;
+	    }
+
+	    public static int [] roll(int diceNum){
 		Random r = new Random();
-        	int [] arr = new int [5];
-        	for (int i = 0; i < arr.length; i++){
-            		arr [i] = r.nextInt(6) + 1;
-        	}
-        	return arr;
-	//hello
-    	}
-	
-	public static int total (int [] arr){
+		int [] arr = new int [diceNum];
+		for (int i = 0; i < diceNum; i++){
+		    arr [i] = r.nextInt(6) + 1;
+		}
+		return arr;
+		//hello
+	    }
+
+	    public static int total (int [] arr, int diceNum){
 		int temp = 0;
-		for (int j = 0; j < arr.length; j++){
-			temp += arr [j];
+		for (int j = 0; j < diceNum; j++){
+		    temp += arr [j];
 		}
 		return temp;
-	}
-	
-	public static String compare (int p, int c){
+	    }
+
+	    public static String compare (int p, int c){
 		if (p > c){
-			return "Player";
+		    return "Player";
 		} else if (c > p){
-			return "Computer";
+		    return "Computer";
 		} else {
-			return "Tie";
+		    return "Tie, neither";
 		}
+	    }
 	}
-}
 
 //This is for the class in which you're setting up the Jpanel
 rollButton.addActionListener(new ActionListener()
